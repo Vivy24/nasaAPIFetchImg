@@ -21,10 +21,16 @@ const ImagesList = () => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.date.value);
+    if (event.target.date.value) {
+      dispatch(
+        fetchImage(
+          `https://api.nasa.gov/planetary/apod?api_key=XpcQD12R63nhygJvUVAvJayfZyzQQeuiODtrBD1q&start_date=${event.target.date.value}&thumbs=true`
+        )
+      );
+    }
     dispatch(
       fetchImage(
-        `https://api.nasa.gov/planetary/apod?api_key=XpcQD12R63nhygJvUVAvJayfZyzQQeuiODtrBD1q&start_date=${event.target.date.value}&thumbs=true`
+        "https://api.nasa.gov/planetary/apod?api_key=XpcQD12R63nhygJvUVAvJayfZyzQQeuiODtrBD1q&count=20&thumbs=true"
       )
     );
   };
@@ -40,6 +46,7 @@ const ImagesList = () => {
         <label htmlFor="date"> Date </label>
         <input name="date" type="date"></input>
         <button type="submit"> Search</button>
+        <p>If date is not chosen, it will display randomly</p>
       </form>
       {imagesStore.imageList.length === 0 ? (
         Object.keys(imagesStore.fetchingError).length > 0 ? (
@@ -52,8 +59,10 @@ const ImagesList = () => {
         )
       ) : (
         <div className={classes.imgContainer}>
-          <h3>Images Found: {imagesStore.imageList.length}</h3>
-          <h3>Liked Images: {imagesStore.likeImageId.length}</h3>
+          <h3>
+            Images Found: {imagesStore.imageList.length} || Liked Images:{" "}
+            {imagesStore.likeImageId.length}
+          </h3>
           <div className={classes.imgList}>
             {imagesStore.imageList.map((image) => {
               return <Image key={image.id} image={image} />;

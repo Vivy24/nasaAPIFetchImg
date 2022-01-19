@@ -4,6 +4,7 @@ function App() {
   return (
     <div className="App">
       <ImagesList />
+      <p style={{ textAlign: "center" }}>Made by Vivy Vuong.</p>
     </div>
   );
 }

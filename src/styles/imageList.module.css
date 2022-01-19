@@ -1,0 +1,39 @@
+.imgList {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 500px));
+  grid-auto-rows: auto;
+
+  grid-column-gap: 20px;
+}
+
+.imgContainer {
+  text-align: center;
+}
+
+.searchList {
+  width: fit-content;
+  margin: auto;
+}
+
+.searchList button {
+  margin: 5px;
+  width: 8em;
+  height: 1.5em;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.searchList button:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pageTitle {
+  text-align: center;
+}
+
+.pageCredit {
+  text-align: center;
+}

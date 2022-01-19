@@ -25,11 +25,10 @@ const Image = (props) => {
 
   return (
     <div className={classes.card}>
-      {props.image.copyright && <p>Brough to you by {props.image.copyright}</p>}
       <img src={`${props.image.imageUrl}`} alt={props.image.title}></img>
-      <h2>{props.image.title}</h2>
-      <h5>{props.image.date}</h5>
-      {props.image.explanation && <p>{props.image.explanation}</p>}
+
+      <p className={classes.imgTitle}>{props.image.title}</p>
+      <p className={classes.imgDate}>{props.image.date}</p>
 
       {imageStore.likeImageId.find((id) => `${props.image.id}` === id) ? (
         <button name="unlike" value={props.image.id} onClick={handleOnClick}>
@@ -42,6 +41,7 @@ const Image = (props) => {
           Like
         </button>
       )}
+      {props.image.copyright && <p>Copyright {props.image.copyright}</p>}
     </div>
   );
 };

@@ -22,8 +22,12 @@ const imgSlice = createSlice({
     },
 
     hasFetchError(state, action) {
-      console.log(action.payload.error);
       state.fetchingError = action.payload.error;
+    },
+    reset(state) {
+      state.imageList = [];
+      state.likeImageId = [];
+      state.fetchingError = [];
     },
   },
 });
